@@ -1,7 +1,7 @@
 import { yupResolver } from '@hookform/resolvers/yup'
 import React from 'react'
 import { useForm } from 'react-hook-form'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import * as Yup from 'yup'
 
@@ -14,6 +14,7 @@ import * as C from './style'
 
 const Login = () => {
   const { putUserData } = useUser()
+  const navigate = useNavigate()
 
   const schema = Yup.object().shape({
     email: Yup.string()
@@ -46,6 +47,9 @@ const Login = () => {
     )
 
     putUserData(data)
+    setTimeout(() => {
+      navigate('/')
+    }, 1001)
   }
 
   return (
