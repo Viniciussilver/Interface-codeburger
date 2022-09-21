@@ -7,7 +7,7 @@ export const ContainerCarousel = styled.div`
   align-items: center;
   gap: 40px;
   padding: 40px 0;
-  background-color: #efefef;
+  background-color: #fff;
 
   .rec.rec-arrow {
     background-color: #9758a6;
@@ -29,10 +29,27 @@ export const ContainerCarousel = styled.div`
 
 export const CategoryImg = styled.img``
 
+export const P = styled.p`
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 120%;
+  color: #424242;
+`
+
+export const Span = styled.span`
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 120%;
+
+  color: #212121;
+`
+
 export const BoxItem = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  width: 200px;
 `
 
 export const Button = styled.button`
@@ -41,6 +58,7 @@ export const Button = styled.button`
     0px 20px 40px rgba(151, 88, 166, 0.24);
   border-radius: 8px;
   border: none;
+  margin-top: 10px;
 
   width: 200px;
   height: 66px;
@@ -62,4 +80,5 @@ export const Button = styled.button`
 export const Img = styled.img`
   width: 200px;
   border-radius: 10px;
+  margin-bottom: 10px;
 `
