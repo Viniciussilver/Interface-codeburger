@@ -1,13 +1,13 @@
 import styled from 'styled-components'
 
 export const ContainerCarousel = styled.div`
-  width: 100vw;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 40px;
   padding: 40px 0;
   background-color: #fff;
+  width: 100vw;
 
   .rec.rec-arrow {
     background-color: #9758a6;
@@ -32,7 +32,7 @@ export const CategoryImg = styled.img``
 export const P = styled.p`
   font-style: normal;
   font-weight: 700;
-  font-size: 20px;
+  font-size: 18px;
   line-height: 120%;
   color: #424242;
 `
@@ -40,7 +40,7 @@ export const P = styled.p`
 export const Span = styled.span`
   font-style: normal;
   font-weight: 700;
-  font-size: 20px;
+  font-size: 18px;
   line-height: 120%;
 
   color: #212121;

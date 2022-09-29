@@ -47,9 +47,7 @@ const Login = () => {
     )
 
     putUserData(data)
-    setTimeout(() => {
-      navigate('/')
-    }, 1001)
+    navigate('/')
   }
 
   return (
