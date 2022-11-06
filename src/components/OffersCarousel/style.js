@@ -7,7 +7,7 @@ export const ContainerCarousel = styled.div`
   gap: 40px;
   padding: 40px 0;
   background-color: #fff;
-  width: 100vw;
+  width: 100%;
 
   .rec.rec-arrow {
     background-color: #9758a6;

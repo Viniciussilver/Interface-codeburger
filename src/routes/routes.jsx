@@ -1,30 +1,47 @@
-import React, { useState } from 'react'
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-  Navigate,
-} from 'react-router-dom'
+import React from 'react'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 
-import Home from '../containers/Home'
-import Login from '../containers/Login'
-import Register from '../containers/Register'
+import { Register, Products, Login, Home, Cart, Admin } from '../containers'
+import PrivateRoute from './PrivateRoute'
 
 function Pages() {
-  const [data, setData] = useState({})
-
-  const userData = async () => {
-    const response = await localStorage.getItem('userData')
-    setData(response)
-  }
-
-  userData()
   return (
     <Router>
       <Routes>
         <Route element={<Login />} path="/login" />
         <Route element={<Register />} path="/cadastro" />
-        <Route element={<Home />} path="/" />
+        <Route
+          element={
+            <PrivateRoute>
+              <Home />
+            </PrivateRoute>
+          }
+          path="/"
+        />
+        <Route
+          element={
+            <PrivateRoute>
+              <Products />
+            </PrivateRoute>
+          }
+          path="/Produtos"
+        />
+        <Route
+          element={
+            <PrivateRoute>
+              <Cart />
+            </PrivateRoute>
+          }
+          path="/carrinho"
+        />
+        <Route
+          element={
+            <PrivateRoute isAdmin>
+              <Admin />
+            </PrivateRoute>
+          }
+          path="/pedidos"
+        />
       </Routes>
     </Router>
   )

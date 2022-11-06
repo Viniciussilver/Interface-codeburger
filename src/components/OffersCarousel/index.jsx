@@ -1,18 +1,19 @@
 import React, { useEffect, useState } from 'react'
 import Carousel from 'react-elastic-carousel'
 
-import imageTeste from '../../assets/img-teste.png'
 import Offers from '../../assets/ofers.png'
+import { useCart } from '../../hooks/CartContext'
 import api from '../../services/api'
 import formatCurrency from '../../utils/formatCurrency'
 import * as C from './style'
 
-const OffersCarousel = () => {
+export const OffersCarousel = () => {
   const [offers, setOffers] = useState([])
+  const { putProductsInCart } = useCart()
 
   useEffect(() => {
     const loadOffers = async () => {
-      const { data } = await api.get('product')
+      const { data } = await api.get('products')
 
       const productsOnOffer = data
         .filter(item => !item.offer)
@@ -42,15 +43,15 @@ const OffersCarousel = () => {
         {offers &&
           offers.map(product => (
             <C.BoxItem key={product.id}>
-              <C.Img src={imageTeste} alt="Foto da categoria" />
+              <C.Img src={product.url} alt="Foto da categoria" />
               <C.P>{product.name}</C.P>
               <C.Span>{product.formatedPrice}</C.Span>
-              <C.Button>Peça agora</C.Button>
+              <C.Button onClick={() => putProductsInCart(product)}>
+                Peça agora
+              </C.Button>
             </C.BoxItem>
           ))}
       </Carousel>
     </C.ContainerCarousel>
   )
 }
-
-export default OffersCarousel

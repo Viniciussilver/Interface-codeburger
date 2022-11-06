@@ -6,6 +6,9 @@ const CartContext = createContext({})
 export const CartProvider = ({ children }) => {
   const [cartProducts, setCartProducts] = useState([])
 
+  const updateLocalStorage = async product => {
+    await localStorage.setItem('codeburger:cartInfo', JSON.stringify(product))
+  }
   const putProductsInCart = async product => {
     const cartIndex = cartProducts.findIndex(prd => prd.id === product.id)
 
@@ -21,7 +24,35 @@ export const CartProvider = ({ children }) => {
       setCartProducts(newCart)
     }
 
-    await localStorage.setItem('codeburger:cartInfo', JSON.stringify(newCart))
+    await updateLocalStorage(newCart)
+  }
+
+  const deleteProduct = async id => {
+    const newCart = cartProducts.filter(item => item.id !== id)
+
+    setCartProducts(newCart)
+    await updateLocalStorage(newCart)
+  }
+
+  const increaseProducts = async id => {
+    const newCart = cartProducts.map(item => {
+      return item.id === id ? { ...item, quantity: item.quantity + 1 } : item
+    })
+    setCartProducts(newCart)
+    await updateLocalStorage(newCart)
+  }
+  const decreaseProducts = async id => {
+    const cartIndex = cartProducts.findIndex(pr => pr.id === id)
+
+    if (cartProducts[cartIndex].quantity > 1) {
+      const newCart = cartProducts.map(item => {
+        return item.id === id ? { ...item, quantity: item.quantity - 1 } : item
+      })
+      setCartProducts(newCart)
+      await updateLocalStorage(newCart)
+    } else {
+      deleteProduct(id)
+    }
   }
 
   useEffect(() => {
@@ -36,7 +67,14 @@ export const CartProvider = ({ children }) => {
   }, [])
 
   return (
-    <CartContext.Provider value={{ putProductsInCart, cartProducts }}>
+    <CartContext.Provider
+      value={{
+        increaseProducts,
+        decreaseProducts,
+        putProductsInCart,
+        cartProducts,
+      }}
+    >
       {children}
     </CartContext.Provider>
   )

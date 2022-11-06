@@ -7,12 +7,12 @@ import * as Yup from 'yup'
 
 import LoginImg from '../../assets/img_login.svg'
 import Logo from '../../assets/logo.svg'
-import { Button } from '../../components/Button/index'
+import { Button } from '../../components'
 import { useUser } from '../../hooks/UserContext'
 import api from '../../services/api'
 import * as C from './style'
 
-const Login = () => {
+export const Login = () => {
   const { putUserData } = useUser()
   const navigate = useNavigate()
 
@@ -47,7 +47,14 @@ const Login = () => {
     )
 
     putUserData(data)
-    navigate('/')
+
+    setTimeout(() => {
+      if (data.admin) {
+        navigate('/pedidos')
+      } else {
+        navigate('/')
+      }
+    }, 1010)
   }
 
   return (
@@ -99,5 +106,3 @@ const Login = () => {
     </C.Container>
   )
 }
-
-export default Login

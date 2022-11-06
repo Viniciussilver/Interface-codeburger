@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
 export const ContainerCarousel = styled.div`
@@ -34,12 +35,16 @@ export const BoxItem = styled.div`
   gap: 10px;
 `
 
-export const Button = styled.button`
+export const Button = styled(Link)`
   background: #9758a6;
   box-shadow: 0px 5px 10px rgba(151, 88, 166, 0.22),
     0px 20px 40px rgba(151, 88, 166, 0.24);
   border-radius: 8px;
   border: none;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
   width: 200px;
   height: 66px;
