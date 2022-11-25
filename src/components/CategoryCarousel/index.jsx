@@ -12,31 +12,29 @@ export const CategoryCarousel = () => {
     const load = async () => {
       const { data } = await api.get('categories')
       setCategory(data)
-      console.log(data)
     }
     load()
   }, [])
 
   const breakPoints = [
     { width: 1, itemsToShow: 1 },
-    { width: 400, itemsToShow: 2 },
-    { width: 600, itemsToShow: 3 },
-    { width: 900, itemsToShow: 4 },
-    { width: 1200, itemsToShow: 5 },
+    { width: 600, itemsToShow: 2 },
+    { width: 900, itemsToShow: 3 },
+    { width: 1200, itemsToShow: 4 },
   ]
   return (
     <C.ContainerCarousel>
-      <C.CategoryImg src={Category} alt="image category" />
+      <C.CategoryImg src={Category} alt='image category' />
       <Carousel
         itemsToShow={5}
-        style={{ width: '90%' }}
+        style={{ width: '82%' }}
         breakPoints={breakPoints}
       >
         {category &&
           category.map(category => (
             <C.BoxItem key={category.id}>
-              <C.Img src={category.url} alt="Foto da categoria" />
-              <C.Button to="/produtos" state={{ categoryId: category.id }}>
+              <C.Img src={category.url} alt='Foto da categoria' />
+              <C.Button to='/produtos' state={{ categoryId: category.id }}>
                 {category.name}
               </C.Button>
             </C.BoxItem>

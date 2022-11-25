@@ -8,15 +8,15 @@ function Pages() {
   return (
     <Router>
       <Routes>
-        <Route element={<Login />} path="/login" />
-        <Route element={<Register />} path="/cadastro" />
+        <Route element={<Login />} path='/login' />
+        <Route element={<Register />} path='/cadastro' />
         <Route
           element={
             <PrivateRoute>
               <Home />
             </PrivateRoute>
           }
-          path="/"
+          path='/'
         />
         <Route
           element={
@@ -24,7 +24,7 @@ function Pages() {
               <Products />
             </PrivateRoute>
           }
-          path="/Produtos"
+          path='/Produtos'
         />
         <Route
           element={
@@ -32,7 +32,7 @@ function Pages() {
               <Cart />
             </PrivateRoute>
           }
-          path="/carrinho"
+          path='/carrinho'
         />
         <Route
           element={
@@ -40,7 +40,31 @@ function Pages() {
               <Admin />
             </PrivateRoute>
           }
-          path="/pedidos"
+          path='pedidos'
+        />
+        <Route
+          element={
+            <PrivateRoute isAdmin>
+              <Admin />
+            </PrivateRoute>
+          }
+          path='/listar-produtos'
+        />
+        <Route
+          element={
+            <PrivateRoute isAdmin>
+              <Admin />
+            </PrivateRoute>
+          }
+          path='/novo-produto'
+        />
+        <Route
+          element={
+            <PrivateRoute isAdmin>
+              <Admin />
+            </PrivateRoute>
+          }
+          path='/editar-produto'
         />
       </Routes>
     </Router>

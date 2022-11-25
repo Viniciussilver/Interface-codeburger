@@ -16,7 +16,7 @@ export const OffersCarousel = () => {
       const { data } = await api.get('products')
 
       const productsOnOffer = data
-        .filter(item => !item.offer)
+        .filter(item => item.offer)
         .map(product => {
           return { ...product, formatedPrice: formatCurrency(product.price) }
         })
@@ -27,27 +27,26 @@ export const OffersCarousel = () => {
 
   const breakPoints = [
     { width: 1, itemsToShow: 1 },
-    { width: 400, itemsToShow: 2 },
-    { width: 600, itemsToShow: 3 },
-    { width: 900, itemsToShow: 4 },
-    { width: 1200, itemsToShow: 5 },
+    { width: 600, itemsToShow: 2 },
+    { width: 900, itemsToShow: 3 },
+    { width: 1200, itemsToShow: 4 },
   ]
   return (
     <C.ContainerCarousel>
-      <C.CategoryImg src={Offers} alt="image offers" />
+      <C.CategoryImg src={Offers} alt='image offers' />
       <Carousel
         itemsToShow={5}
-        style={{ width: '90%' }}
+        style={{ width: '82%' }}
         breakPoints={breakPoints}
       >
         {offers &&
           offers.map(product => (
             <C.BoxItem key={product.id}>
-              <C.Img src={product.url} alt="Foto da categoria" />
+              <C.Img src={product.url} alt='Foto da categoria' />
               <C.P>{product.name}</C.P>
               <C.Span>{product.formatedPrice}</C.Span>
               <C.Button onClick={() => putProductsInCart(product)}>
-                Peça agora
+                Adicionar
               </C.Button>
             </C.BoxItem>
           ))}

@@ -16,16 +16,16 @@ export const Header = () => {
 
   return (
     <C.Container>
-      <div className="container-left">
+      <div className='container-left'>
         <C.Link
-          className="link-home"
+          className='link-home'
           onClick={() => navigate('/')}
           isActive={location.pathname === '/'}
         >
           Home
         </C.Link>
         <C.Link
-          className="link-products"
+          className='link-products'
           isActive={location.pathname.includes('produtos')}
           onClick={() => navigate('/produtos')}
         >
@@ -33,21 +33,21 @@ export const Header = () => {
         </C.Link>
       </div>
 
-      <div className="container-right">
-        <div className="cartItems" onClick={() => navigate('/carrinho')}>
-          <a className="pageHome">
-            <img src={Cart} alt="carrinho" />
+      <div className='container-right'>
+        <div className='cartItems' onClick={() => navigate('/carrinho')}>
+          <a className='pageHome'>
+            <img src={Cart} alt='carrinho' />
           </a>
           {cartProducts.length > 0 && <div>{cartProducts.length}</div>}
         </div>
         <span></span>
         <a>
-          <img src={Person} alt="logo pessoa" />
+          <img src={Person} alt='logo pessoa' />
         </a>
-        <div className="container-text">
+        <div className='container-text'>
           <p>Olá, {userData.name}</p>
           <a
-            className="link-logout"
+            className='link-logout'
             onClick={() => logout() && navigate('/login')}
           >
             Sair

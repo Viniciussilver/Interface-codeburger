@@ -1,15 +1,19 @@
 import styled from 'styled-components'
 
 export const Container = styled.div`
-  background-color: #181a1b;
-  padding: 15px;
-  box-shadow: 0px 10px 40px rgba(0, 0, 0, 0.03);
-  border-radius: 10px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  gap: 40px;
-  color: #fff;
+  .container-items {
+    background-color: #fff;
+    padding: 15px;
+    box-shadow: 0px 10px 40px rgba(0, 0, 0, 0.03);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 40px;
+    color: rgba(0, 0, 0, 0.8);
+    position: sticky;
+    top: 100px;
+  }
 
   .container-top {
     display: grid;

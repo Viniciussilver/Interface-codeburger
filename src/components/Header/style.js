@@ -3,7 +3,7 @@ import styled from 'styled-components'
 export const Container = styled.div`
   width: 100%;
   height: 70px;
-  box-shadow: 2px 3px 5px rgba(0, 0, 0, 0.15);
+  box-shadow: 0.5px 0.5px 10px 0.5px #000;
   background-color: #181a1b;
   display: flex;
   align-items: center;
@@ -29,16 +29,18 @@ export const Container = styled.div`
   }
 
   .cartItems div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     min-width: 22px;
     min-height: 22px;
     border-radius: 50%;
     background-color: #9758a6;
     color: #ececec;
-    text-align: center;
     position: absolute;
     top: -13px;
     right: -6px;
-    font-size: 17px;
+    font-size: 16px;
   }
 
   span {

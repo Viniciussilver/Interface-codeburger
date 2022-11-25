@@ -7,8 +7,8 @@ import * as C from './style'
 export const Cart = () => {
   return (
     <C.Container>
-      <C.CartImg src={CartLogo} alt="Logo da home" />
-      <div className="container-item">
+      <C.CartImg src={CartLogo} alt='Logo da home' />
+      <div className='container-item'>
         <CartItens />
         <CartResume />
       </div>

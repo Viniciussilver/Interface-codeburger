@@ -11,7 +11,7 @@ export const CartResume = () => {
   const [finalPrice, setFinalPrice] = useState(0)
   const [deliveryTax] = useState(5)
 
-  const { cartProducts } = useCart()
+  const { cartProducts, resetCart } = useCart()
 
   useEffect(() => {
     const sumAllItems = cartProducts.reduce((acc, currency) => {
@@ -33,29 +33,33 @@ export const CartResume = () => {
       success: 'Pedido realizado com sucesso',
       error: 'Falha ao tentar realizar o seu pedido, tente novamente',
     })
+
+    setTimeout(() => {
+      resetCart()
+    }, 1100)
   }
 
   return (
-    <div>
-      <C.Container>
-        <div className="container-top">
-          <h2 className="title">Resumo do pedido</h2>
-          <p className="items">Itens</p>
-          <p className="item-price">{formatCurrency(finalPrice)}</p>
-          <p className="delivery-tax">Taxa de entrega</p>
-          <p className="delivery-tax-price">{formatCurrency(deliveryTax)}</p>
+    <C.Container>
+      <div className='container-items'>
+        <div className='container-top'>
+          <h2 className='title'>Resumo do pedido</h2>
+          <p className='items'>Itens</p>
+          <p className='item-price'>{formatCurrency(finalPrice)}</p>
+          <p className='delivery-tax'>Taxa de entrega</p>
+          <p className='delivery-tax-price'>{formatCurrency(deliveryTax)}</p>
         </div>
-        <div className="container-bottom">
+        <div className='container-bottom'>
           <p>Total</p>
           <p>{formatCurrency(finalPrice + deliveryTax)}</p>
         </div>
-      </C.Container>
-      <Button
-        onClick={() => submitOrder()}
-        style={{ width: '100%', marginTop: 30 }}
-      >
-        Finalizar pedido
-      </Button>
-    </div>
+        <Button
+          onClick={() => submitOrder()}
+          style={{ width: '100%', marginTop: 15, borderRadius: 7 }}
+        >
+          Finalizar pedido
+        </Button>
+      </div>
+    </C.Container>
   )
 }

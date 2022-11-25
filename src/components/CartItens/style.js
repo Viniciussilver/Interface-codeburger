@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 export const Container = styled.div`
-  background: #181a1b;
+  background: #fff;
   box-shadow: 0px 10px 40px rgba(0, 0, 0, 0.03);
   border-radius: 20px;
   padding: 10px;
@@ -19,7 +19,7 @@ export const Header = styled.div`
     font-size: 17px;
     line-height: 20px;
 
-    color: #9a9a9d;
+    color: rgba(0, 0, 0, 0.8);
   }
 `
 
@@ -37,7 +37,7 @@ export const Body = styled.div`
 
   p {
     font-size: 16px;
-    color: #fff;
+    color: rgba(0, 0, 0, 0.8);
   }
   .item-name {
     width: 150px;
@@ -58,7 +58,7 @@ export const Body = styled.div`
 
       font-size: 22px;
       cursor: pointer;
-      color: #fff;
+      color: rgba(0, 0, 0, 0.8);
     }
   }
 `
@@ -67,4 +67,5 @@ export const EmptyCart = styled.p`
   font-weight: bold;
   padding: 20px;
   text-align: center;
+  color: rgba(0, 0, 0, 0.8);
 `

@@ -31,7 +31,7 @@ export const CartItens = () => {
               <button onClick={() => increaseProducts(item.id)}>+</button>
             </div>
 
-            <p>{item.quantity * item.price}</p>
+            <p>{formatCurrency(item.quantity * item.price)}</p>
           </C.Body>
         ))
       ) : (

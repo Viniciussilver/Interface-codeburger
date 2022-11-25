@@ -18,11 +18,7 @@ export const CardProduct = ({ product }) => {
 
         <div>
           <C.ProductPrice>{product.formatedPrice}</C.ProductPrice>
-          <Button
-            onClick={() => putProductsInCart(product) && navigate('/carrinho')}
-          >
-            Adicionar
-          </Button>
+          <Button onClick={() => putProductsInCart(product)}>Adicionar</Button>
         </div>
       </div>
     </C.Container>

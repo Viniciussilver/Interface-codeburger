@@ -35,6 +35,7 @@ export const P = styled.p`
   font-size: 18px;
   line-height: 120%;
   color: #424242;
+  margin: 10px 0;
 `
 
 export const Span = styled.span`
@@ -79,6 +80,7 @@ export const Button = styled.button`
 
 export const Img = styled.img`
   width: 200px;
+  height: 204px;
   border-radius: 10px;
   margin-bottom: 10px;
 `

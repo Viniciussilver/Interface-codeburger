@@ -7,11 +7,11 @@ import { Header } from '../components'
 function PrivateRoute({ children, isAdmin }) {
   const user = localStorage.getItem('userData')
   if (!user) {
-    return <Navigate replace to="/login" />
+    return <Navigate replace to='/login' />
   }
 
   if (isAdmin && !JSON.parse(user).admin) {
-    return <Navigate replace to="/" />
+    return <Navigate replace to='/' />
   }
   return (
     <>

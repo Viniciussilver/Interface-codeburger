@@ -55,6 +55,8 @@ export const CartProvider = ({ children }) => {
     }
   }
 
+  const resetCart = () => setCartProducts([])
+
   useEffect(() => {
     const loadUserData = async () => {
       const clientCartData = await localStorage.getItem('codeburger:cartInfo')
@@ -73,6 +75,7 @@ export const CartProvider = ({ children }) => {
         decreaseProducts,
         putProductsInCart,
         cartProducts,
+        resetCart,
       }}
     >
       {children}

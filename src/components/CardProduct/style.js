@@ -6,7 +6,7 @@ export const Container = styled.div`
   width: max-content;
   gap: 12px;
   padding: 14px;
-  background: #181a1b;
+  background: #fff;
   box-shadow: 0px 30px 60px rgba(57, 57, 57, 0.1);
   border-radius: 30px;
   /* background-color: white; */
@@ -33,7 +33,7 @@ export const ProductName = styled.p`
   font-size: 16px;
   line-height: 19px;
 
-  color: #ececec;
+  color: rgba(0, 0, 0, 0.8);
 `
 export const ProductPrice = styled.p`
   font-style: normal;
@@ -42,5 +42,5 @@ export const ProductPrice = styled.p`
   line-height: 21px;
   /* identical to box height */
 
-  color: #ececec;
+  color: rgba(0, 0, 0, 0.7);
 `

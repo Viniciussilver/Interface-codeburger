@@ -1,3 +1,5 @@
+import VisibilityIcon from '@mui/icons-material/Visibility'
+import VisibilityOffIcon from '@mui/icons-material/VisibilityOff'
 import styled from 'styled-components'
 
 import BackgroundImage from '../../assets/background_login.svg'
@@ -12,11 +14,11 @@ export const Container = styled.div`
 `
 
 export const ImgLogin = styled.img`
-  height: 80%;
+  height: 65%;
 `
 
 export const ContainerItens = styled.div`
-  height: 80%;
+  height: 65%;
   border-radius: 0 10px 10px 0;
   background-color: #373737;
   display: flex;
@@ -26,7 +28,37 @@ export const ContainerItens = styled.div`
   form {
     display: flex;
     flex-direction: column;
+
+    .box-icons-password {
+      position: relative;
+      width: 100%;
+    }
   }
+`
+
+export const PasswordOff = styled(VisibilityOffIcon)`
+  visibility: ${({ passwordVisible }) =>
+    passwordVisible ? 'hidden' : 'visible'};
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  right: 7px;
+  bottom: 8px;
+  cursor: pointer;
+  color: rgba(0, 0, 0, 0.7);
+`
+
+export const IconPassword = styled(VisibilityIcon)`
+  visibility: ${({ passwordVisible }) =>
+    passwordVisible ? 'visible' : 'hidden'};
+  display: none;
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  right: 7px;
+  bottom: 8px;
+  cursor: pointer;
+  color: rgba(0, 0, 0, 0.7);
 `
 
 export const Flex = styled.div`
@@ -61,18 +93,6 @@ export const Label = styled.label`
 
 export const BoxError = styled.div`
   position: relative;
-`
-
-export const ErrorMessage = styled.span`
-  font-style: normal;
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 16px;
-  margin-top: 3px;
-  color: #cc1717;
-  position: absolute;
-  top: 0;
-  left: 0;
 `
 
 export const Input = styled.input`

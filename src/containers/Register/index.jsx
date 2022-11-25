@@ -1,17 +1,20 @@
 import { yupResolver } from '@hookform/resolvers/yup'
-import React from 'react'
+import React, { useState } from 'react'
 import { useForm } from 'react-hook-form'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import * as Yup from 'yup'
 
 import Logo from '../../assets/logo.svg'
 import RegisterImg from '../../assets/registration_page_image.svg'
-import { Button } from '../../components'
+import { Button, ErrorMessage } from '../../components'
 import api from '../../services/api'
 import * as C from './style'
 
 export const Register = () => {
+  const [passwordVisible, setPasswordVisible] = useState(false)
+
+  const navigate = useNavigate()
   const schema = Yup.object().shape({
     name: Yup.string().required('O seu nome é obrigatório'),
     email: Yup.string()
@@ -46,7 +49,11 @@ export const Register = () => {
       )
 
       if (status === 200 || status === 201) {
-        return toast.success('Cadastro criado com sucesso')
+        toast.success('Cadastro criado com sucesso')
+        setTimeout(() => {
+          navigate('/login')
+        }, 1100)
+        return
       }
       if (status === 409) {
         return toast.error('E-mail já cadastrado')
@@ -60,7 +67,7 @@ export const Register = () => {
 
   return (
     <C.Container>
-      <C.RegisterImg src={RegisterImg} alt="Register-image" />
+      <C.RegisterImg src={RegisterImg} alt='Register-image' />
 
       <C.ContainerItens>
         <C.Flex>
@@ -71,45 +78,57 @@ export const Register = () => {
         <form noValidate onSubmit={handleSubmit(onSubmit)}>
           <C.Label>Nome</C.Label>
           <C.Input
+            autoComplete='off'
             error={errors.name?.message}
-            type="text"
+            type='text'
             {...register('name')}
           />
           <C.BoxError>
-            <C.ErrorMessage>{errors.name?.message}</C.ErrorMessage>
+            <ErrorMessage>{errors.name?.message}</ErrorMessage>
           </C.BoxError>
 
           <C.Label>Email</C.Label>
           <C.Input
+            autoComplete='off'
             error={errors.email?.message}
-            type="email"
+            type='email'
             {...register('email')}
           />
           <C.BoxError>
-            <C.ErrorMessage>{errors.email?.message}</C.ErrorMessage>
+            <ErrorMessage>{errors.email?.message}</ErrorMessage>
           </C.BoxError>
 
           <C.Label>Senha</C.Label>
           <C.Input
             error={errors.password?.message}
-            type="password"
+            type={passwordVisible ? 'text' : 'password'}
             {...register('password')}
           />
+          <div className='box-icons-password'>
+            <C.IconPassword
+              onClick={() => setPasswordVisible(false)}
+              passwordVisible={passwordVisible}
+            />
+            <C.PasswordOff
+              onClick={() => setPasswordVisible(true)}
+              passwordVisible={passwordVisible}
+            />
+          </div>
           <C.BoxError>
-            <C.ErrorMessage>{errors.password?.message}</C.ErrorMessage>
+            <ErrorMessage>{errors.password?.message}</ErrorMessage>
           </C.BoxError>
 
           <C.Label>Confirmar senha</C.Label>
           <C.Input
             error={errors.confirmPassword?.message}
-            type="password"
+            type='password'
             {...register('confirmPassword')}
           />
           <C.BoxError>
-            <C.ErrorMessage>{errors.confirmPassword?.message}</C.ErrorMessage>
+            <ErrorMessage>{errors.confirmPassword?.message}</ErrorMessage>
           </C.BoxError>
 
-          <Button type="submit" style={{ marginTop: 37 }}>
+          <Button type='submit' style={{ marginTop: 37 }}>
             Cadastrar
           </Button>
         </form>
@@ -118,7 +137,7 @@ export const Register = () => {
           Já possuí conta ?{' '}
           <Link
             style={{ textDecorationLine: 'underline', color: '#fff' }}
-            to="/login"
+            to='/login'
           >
             Entrar
           </Link>

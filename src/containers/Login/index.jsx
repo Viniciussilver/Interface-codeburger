@@ -1,5 +1,5 @@
 import { yupResolver } from '@hookform/resolvers/yup'
-import React from 'react'
+import React, { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { Link, useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
@@ -7,7 +7,7 @@ import * as Yup from 'yup'
 
 import LoginImg from '../../assets/img_login.svg'
 import Logo from '../../assets/logo.svg'
-import { Button } from '../../components'
+import { Button, ErrorMessage } from '../../components'
 import { useUser } from '../../hooks/UserContext'
 import api from '../../services/api'
 import * as C from './style'
@@ -15,6 +15,8 @@ import * as C from './style'
 export const Login = () => {
   const { putUserData } = useUser()
   const navigate = useNavigate()
+
+  const [passwordVisible, setPasswordVisible] = useState(false)
 
   const schema = Yup.object().shape({
     email: Yup.string()
@@ -59,7 +61,7 @@ export const Login = () => {
 
   return (
     <C.Container>
-      <C.ImgLogin src={LoginImg} alt="Login-image" />
+      <C.ImgLogin src={LoginImg} alt='Login-image' />
 
       <C.ContainerItens>
         <C.Flex>
@@ -70,25 +72,37 @@ export const Login = () => {
         <form noValidate onSubmit={handleSubmit(onSubmit)}>
           <C.Label>Email</C.Label>
           <C.Input
+            autoComplete='off'
             error={errors.email?.message}
-            type="email"
+            type='email'
             {...register('email')}
           />
           <C.BoxError>
-            <C.ErrorMessage>{errors.email?.message}</C.ErrorMessage>
+            <ErrorMessage>{errors.email?.message}</ErrorMessage>
           </C.BoxError>
 
           <C.Label>Senha</C.Label>
           <C.Input
             error={errors.password?.message}
-            type="password"
+            type={passwordVisible ? 'text' : 'password'}
             {...register('password')}
           />
+          <div className='box-icons-password'>
+            <C.IconPassword
+              onClick={() => setPasswordVisible(false)}
+              passwordVisible={passwordVisible}
+            />
+            <C.PasswordOff
+              onClick={() => setPasswordVisible(true)}
+              passwordVisible={passwordVisible}
+            />
+          </div>
+
           <C.BoxError>
-            <C.ErrorMessage>{errors.password?.message}</C.ErrorMessage>
+            <ErrorMessage>{errors.password?.message}</ErrorMessage>
           </C.BoxError>
 
-          <Button type="submit" style={{ marginTop: 55 }}>
+          <Button type='submit' style={{ marginTop: 55 }}>
             Entrar
           </Button>
         </form>
@@ -97,7 +111,7 @@ export const Login = () => {
           Não possuí conta ?{' '}
           <Link
             style={{ textDecorationLine: 'underline', color: '#fff' }}
-            to="/cadastro"
+            to='/cadastro'
           >
             Cadastre-se
           </Link>

@@ -12,6 +12,7 @@
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
     "@hookform/resolvers": "^2.9.8",
+    "@mui/icons-material": "^5.10.9",
     "@mui/material": "^5.10.12",
     "@mui/styled-engine-sc": "^5.10.6",
     "@mui/x-data-grid": "^5.17.10",
@@ -22,6 +23,7 @@
     "react-elastic-carousel": "^0.11.5",
     "react-hook-form": "^7.35.0",
     "react-router-dom": "^6.4.0",
+    "react-select": "^5.6.0",
     "react-toastify": "^9.0.8",
     "styled-components": "^5.3.6",
     "yup": "^0.32.11"
